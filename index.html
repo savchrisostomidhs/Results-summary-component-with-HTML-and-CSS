@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Results summary component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url(./assets/fonts/HankenGrotesk-VariableFont_wght.ttf);
+    }
+
+    :root {
+      --Light-red: hsl(0, 100%, 67%);
+      --Orangey-yellow: hsl(39, 100%, 56%);
+      --Green-teal: hsl(166, 100%, 37%);
+      --Cobalt-blue: hsl(234, 85%, 45%);
+      --Light-slate-blue-background: hsl(252, 100%, 67%);
+      --Light-royal-blue-background: hsl(241, 81%, 54%);
+      --Violet-blue-circle: hsla(256, 72%, 46%, 1);
+      --Persian-blue-circle: hsla(241, 72%, 46%, 0);
+      --White: hsl(0, 0%, 100%);
+      --Pale-blue: hsl(221, 100%, 96%);
+      --Light-lavender: hsl(241, 100%, 89%);
+      --Dark-gray-blue: hsl(224, 30%, 27%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Hanken Grotesk";
+      font-size: 18px;
+      background-color: var(--White);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /*  Result  */
+
+    .result {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background-image: linear-gradient(var(--Light-slate-blue-background), var(--Light-royal-blue-background));
+      border-radius: 0 0 25px 25px;
+      color: var(--White);
+    }
+
+    .result>p:nth-child(1) {
+      opacity: 0.8;
+      font-size: 16px;
+      margin: 15px 0;
+    }
+
+    .result>div {
+      border-radius: 50%;
+      background-image: linear-gradient(var(--Violet-blue-circle), var(--Persian-blue-circle));
+      width: 125px;
+      height: 125px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .result>div p:nth-child(1) {
+      font-weight: bold;
+      font-size: 45px;
+    }
+
+    .result>div p:nth-child(2) {
+      font-size: 12px;
+      opacity: 0.5;
+    }
+
+    .result>h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .result>p:nth-child(4) {
+      opacity: 0.8;
+      font-size: 16px;
+      margin: 0 50px 40px 50px;
+    }
+
+    /*  Summary  */
+
+    .summary {
+      display: flex;
+      flex-direction: column;
+      padding: 25px;
+    }
+
+    .summary h6 {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .summary>div {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      width: 100%;
+      height: 50px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .summary>div>p {
+      margin-top: 5px;
+      font-size: 16px;
+      color: var(--Dark-gray-blue);
+    }
+
+    .summary>div span {
+      font-weight: bold;
+      color: black;
+    }
+
+    .summary>div div {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+    }
+
+    .summary>div>div>p {
+      margin: 3px 0 0 10px;
+      font-weight: 500;
+    }
+
+    .reaction {
+      background-color: hsla(0, 100%, 67%, 0.1)
+    }
+
+    .reaction>div p {
+      color: var(--Light-red);
+    }
+
+    .memory {
+      background-color: hsla(39, 100%, 56%, 0.1);
+    }
+
+    .memory>div p {
+      color: var(--Orangey-yellow);
+    }
+
+    .verbal {
+      background-color: hsla(166, 100%, 37%, 0.1);
+    }
+
+    .verbal>div p {
+      color: var(--Green-teal);
+    }
+
+    .visual {
+      background-color: hsla(234, 85%, 45%, 0.1);
+    }
+
+    .visual>div p {
+      color: var(--Cobalt-blue);
+    }
+
+    .summary button {
+      background: none;
+      border: none;
+      height: 50px;
+      border-radius: 50px;
+      background-color: var(--Dark-gray-blue);
+      cursor: pointer;
+      color: var(--White);
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .summary button:hover {
+      background-image: linear-gradient(var(--Light-slate-blue-background), var(--Light-royal-blue-background));
+    }
+
+    @media (min-width: 481px) {
+      body {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+      }
+
+      main {
+        flex-direction: row;
+        max-width: 500px;
+        max-height: 350px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+        border-radius: 25px;
+      }
+
+      .result {
+        border-radius: 25px;
+        width: 50%;
+      }
+
+      .result>p:nth-child(1) {
+        font-size: 18px;
+        margin: 25px 0;
+      }
+
+      .result>h2 {
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+
+      .result>p:nth-child(4) {
+        opacity: 0.8;
+        font-size: 14px;
+        margin: 0 25px 0 25px;
+      }
+
+      /* Summary */
+
+      .summary {
+        width: 50%;
+      }
+
+      .summary h6 {
+        font-size: 18px;
+      }
+
+      .summary>div {
+        height: 40px;
+        margin-bottom: 10px;
+      }
+
+      .summary>div>p {
+        margin-top: 2px;
+        font-size: 14px;
+      }
+
+      .summary>div>div>p {
+        margin: 0 0 0 10px;
+        font-size: 16px;
+      }
+
+      .summary button {
+        background: none;
+        border: none;
+        height: 40px;
+        border-radius: 50px;
+        background-color: var(--Dark-gray-blue);
+        cursor: pointer;
+        color: var(--White);
+        font-size: 14px;
+        font-weight: normal;
+        margin: 20px 0 0 0;
+      }
+    }
+
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+      display: none;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="result">
+      <p>Your Result</p>
+
+      <div>
+        <p>76</p>
+        <p>of 100</p>
+      </div>
+
+      <h2>Great</h2>
+      <p>You scored higher than 65% of the people who have taken these tests.</p>
+    </div>
+    <div class="summary">
+      <h6>Summary</h6>
+      <div class="reaction">
+        <div>
+          <img src="./assets/images/icon-reaction.svg" alt="Reaction">
+          <p>Reaction</p>
+        </div>
+        <p><span>80</span> / 100</p>
+      </div>
+      <div class="memory">
+        <div>
+          <img src="./assets/images/icon-memory.svg" alt="Memory">
+          <p>Memory</p>
+        </div>
+        <p><span>92</span> / 100</p>
+      </div>
+      <div class="verbal">
+        <div>
+          <img src="./assets/images/icon-verbal.svg" alt="Verbal">
+          <p>Verbal</p>
+        </div>
+        <p><span>61</span> / 100</p>
+      </div>
+      <div class="visual">
+        <div>
+          <img src="./assets/images/icon-visual.svg" alt="Visual">
+          <p>Visual</p>
+        </div>
+        <p><span>72</span> / 100</p>
+      </div>
+
+      <button>Continue</button>
+    </div>
+
+  </main>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+
+</html>
